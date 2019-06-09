@@ -22,7 +22,7 @@ public class MainFrame extends JFrame {
 			}
 			
 		});
-		
+		//add layouts
 		add(form, BorderLayout.WEST);
 		add(toolbar, BorderLayout.NORTH);
 		add(textPanel, BorderLayout.CENTER);
