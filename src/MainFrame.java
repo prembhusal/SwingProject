@@ -23,6 +23,7 @@ public class MainFrame extends JFrame {
 			}
 			
 		});
+<<<<<<< HEAD
 		
 		form.setFormListener(new FormListener() {
 			public void formEventOccured(FormEvent e) {
@@ -32,6 +33,9 @@ public class MainFrame extends JFrame {
 			}
 		});
 		
+=======
+		//add layouts
+>>>>>>> c53b6ccc82db85088d0b478fe5df53bdf0da49e3
 		add(form, BorderLayout.WEST);
 		add(toolbar, BorderLayout.NORTH);
 		add(textPanel, BorderLayout.CENTER);
