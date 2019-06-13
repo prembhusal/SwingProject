@@ -6,6 +6,7 @@ public class MainFrame extends JFrame {
 	private TextPanel textPanel;
 	private Toolbar toolbar;
 	private SimpleForm form;
+	
 	public MainFrame() {
 		super("test app");
 
@@ -21,6 +22,14 @@ public class MainFrame extends JFrame {
 				textPanel.appendText(text);
 			}
 			
+		});
+		
+		form.setFormListener(new FormListener() {
+			public void formEventOccured(FormEvent e) {
+				String name = e.getName();
+				String work = e.getWork();
+				textPanel.appendText(name + ": "+ work + "\n");
+			}
 		});
 		
 		add(form, BorderLayout.WEST);

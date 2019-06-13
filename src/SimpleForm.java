@@ -2,6 +2,8 @@ import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -17,6 +19,7 @@ public class SimpleForm extends JPanel {
 	private JTextField nameField;
 	private JTextField workField;
 	private JButton submitBtn;
+	private FormListener formListener;
 	
 	public SimpleForm() {
 		Dimension dm = getPreferredSize();
@@ -29,6 +32,18 @@ public class SimpleForm extends JPanel {
 		workField = new JTextField(10);
 		
 		submitBtn = new JButton("Submit");
+		
+		submitBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String name = nameField.getText();
+				String work = workField.getText();
+				
+				FormEvent ev = new FormEvent(this,name, work);
+				if(formListener != null) {
+					formListener.formEventOccured(ev);
+				}
+			}		
+		});
 		
 		Border innerBorder = BorderFactory.createTitledBorder("Add something");
 		Border outerBorder = BorderFactory.createEmptyBorder(5,5,5,5);
@@ -80,6 +95,9 @@ public class SimpleForm extends JPanel {
 	gc.anchor = GridBagConstraints.FIRST_LINE_START;
 	add(submitBtn,gc);
 	
+	}
+	public void setFormListener(FormListener listener) {
+		this.formListener = listener;
 	}
 
 }
